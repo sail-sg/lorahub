@@ -192,7 +192,8 @@ def main():
     """
     # get a list of modules to be used in the composition
     modules = get_lora_module_list()
-
+    print("modules:", modules)
+    
     # construct input list and output list
     example_inputs, examples_outputs = [], []
     for example in get_examples_for_learning():
