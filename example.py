@@ -183,6 +183,7 @@ def get_lora_module_list():
     """
     You can have a custom filtering strategy to select the modules to be used in the composition. Here we randomly select 20 modules.
     """
+    random.seed(42)
     return random.sample(LORA_MODULE_NAMES, 20)
 
 
