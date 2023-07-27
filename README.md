@@ -38,13 +38,50 @@ Our experimental data shows the superior efficacy of our method in comparison to
 
 ## Project
 
-project file intro todo
+``` shell
+|-- lorahub
+    -- algorithm.py # mainly code for lorahub learning
+    -- constant.py # base lora candidates
+|-- example.py # simple demo code
+```
+
+To used LoraHub learning by calling function
+
+``` python
+def lorahub_learning(lora_module_list: List[str], # list of lora candidates
+                     example_inputs: List[str],
+                     example_outputs: List[str],
+                     max_inference_step: int, 
+                     model_name_or_path=None, # if not given, we will use the model_name_or_path in lora config
+                     batch_size=None, 
+                     get_loss=default_get_loss, # The function to get the objective for optimiztion, use loss as default (can be changed to something like acc. or similarity)
+                     get_regular=default_l1_regularization,  # The function to get regularization term for the weight, use 0.05*|w_i| as default
+                     seed=42)
+
+```
+
 
 # ⚡️ Quickstart
 
 ## Prepare Environment
 
+First, you should run the following commands to install the latest lib developed for LoraHub.
 
+```python
+pip install datasets
+pip install transformers
+pip install peft
+```
+
+and some other requirements
+
+```
+pip install nevergrad
+pip install torch
+pip install tqdm
+pip install pandas
+pip install numpy
+```
 
 ## Install LoraHub
 
@@ -57,35 +94,3 @@ The pypi package will be setup in few days.
 Our methodology requires a compendium of LoRA modules trained on preceding tasks. For parity with Flan, we adopt the tasks utilized to instruct Flan-T5, thereby incorporating nearly $200$ distinct tasks and their corresponding instructions via https://huggingface.co/datasets/conceptofmind/FLAN\_2022. Following this, we created several LoRA modules as possible candidates. These LoRA modules can be accessed at https://huggingface.co/models?search=lorahub.
 
 
-
-
-
-# 🐣 Add your own LoRA
-
-todo
-
-# 💬 Citation
-
-If our work is useful for you, please consider citing our paper:
-
-```bibtex
-todo
-```
-
-# ❓ Frequently Asked Questions
-
-### 1. AttributeError: 'NoneType' object has no attribute 'bpe'
-
-You should firstly check the version of fairseq, which should be equal or greater than `0.12.0` when you use `pip list` to show it.
-
-# 👍 Contributing
-
-todo
-
-# 📝 License
-
-todo
-
-# ™️ Trademarks
-
-todo
