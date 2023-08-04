@@ -1,0 +1,16 @@
+# Configuration for Cog ⚙️
+# Reference: https://github.com/replicate/cog/blob/main/docs/yaml.md
+
+build:
+  gpu: true
+  python_version: "3.11"
+  python_packages:
+    - "numpy==1.25.2"
+    - "torch==2.0.1"
+    - "peft==0.4.0"
+    - "tqdm==4.65.0"
+    - "nevergrad==0.11.0"
+    - "transformers==4.31.0"
+    - "datasets==2.14.3"
+
+predict: "predict.py:Predictor"
