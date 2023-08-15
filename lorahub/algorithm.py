@@ -216,6 +216,7 @@ def lorahub_inference(example_inputs: List[str],
     dataset = load_dataset(example_inputs, example_outputs, tokenizer)
     # use gpu if available
     device = "cuda" if torch.cuda.is_available() else "cpu"
+    model = model.to(device)
 
     for i in range(0, len(dataset["input"]), batch_size):
         inputs = tokenizer(
