@@ -194,7 +194,7 @@ def main():
     # get a list of modules to be used in the composition
     modules = get_lora_module_list()
     print("modules:", modules)
-    
+
     # construct input list and output list
     example_inputs, examples_outputs = [], []
     for example in get_examples_for_learning():
@@ -219,13 +219,14 @@ def main():
         example_inputs.append(example["input"])
         examples_outputs.append(example["output"])
 
-    example_predictions = lorahub_inference(example_inputs=example_inputs,
-                                            model_or_name_path=model,
-                                            tokenizer_or_tokenizer_path=tokenizer,
-                                            batch_size=10,
-                                            # can set as None if you do not have the ground truth
-                                            example_outputs=examples_outputs)
+    example_predictions, perf = lorahub_inference(example_inputs=example_inputs,
+                                                  model_or_name_path=model,
+                                                  tokenizer_or_tokenizer_path=tokenizer,
+                                                  batch_size=10,
+                                                  # can set as None if you do not have the ground truth
+                                                  example_outputs=examples_outputs)
     print("example_predictions:", example_predictions)
+    print("task accuracy:", perf)
 
 
 if __name__ == "__main__":

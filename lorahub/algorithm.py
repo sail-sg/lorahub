@@ -234,9 +234,11 @@ def lorahub_inference(example_inputs: List[str],
         example_predictions.extend(outputs)
     
     if example_outputs is not None:
-        print("Accuracy: ", accuracy_score(example_predictions, example_outputs))
-    
-    return example_predictions
+        task_perf = accuracy_score(example_predictions, example_outputs)
+    else:
+        task_perf = None
+        
+    return example_predictions, task_perf
 
 
 def lorahub_learning(lora_module_list: List[str], 
