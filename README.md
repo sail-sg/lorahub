@@ -4,6 +4,7 @@ The official repository which contains the code and pre-trained models for our p
 
 
 # 🔥 Updates
+- [**2023-9-13**]: Now Available for Easy Installation via `pip install -i https://test.pypi.org/simple/ lorahub`. For usage instructions regarding the interface, please refer to the 'example.py' file
 - [**2023-8-29**]: We released the full produce code at [reproduce_bbh.py](reproduce_bbh.py). Please checkout the script to reproduce our results!
 - [**2023-8-03**]: Integrated into Replicate, check out the [demo](https://replicate.com/cjwbw/lorahub)!
 - [**2023-7-27**]: We released our [code](https://github.com/sail-sg/lorahub) and [demo](https://huggingface.co/spaces/sail/lorahub). Check it out!
