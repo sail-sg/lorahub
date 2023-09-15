@@ -40,11 +40,54 @@ You can install lorahub using
 pip install lorahub
 ```
 
-And then you can use lorahub learning by simply calling the following function:
+And then you can use lorahub learning by simply calling the function `lorahub_learning`:
 
 ``` python
-from lorahub.algorithm import lorahub_learning
+from lorahub.algorithm import lorahub_learning, lorahub_inference
+from lorahub.constant import LORA_MODULE_NAMES
+import random
 
+
+def get_examples_for_learning():
+    """
+    Get a few examples to learn to compose given LoRA modules
+    """
+    return [
+        {"input":
+            "Infer the date from context.\n\nQ: Jane is celebrating the last day of Jan 2012. What is the date tomorrow in MM/DD/YYYY?\nOptions:\n(A) 02/02/2012\n(B) 02/15/2012\n(C) 01/25/2012\n(D) 04/22/2012\n(E) 02/01/2012\n(F) 02/11/2012\nA:", "output": "(E)"}
+    ]
+
+def get_lora_module_list():
+    """
+    You can have a custom filtering strategy to select the modules to be used in the composition. Here we randomly select 20 modules.
+    """
+    random.seed(42)
+    return random.sample(LORA_MODULE_NAMES, 20)
+
+
+# get a list of modules to be used in the composition
+modules = get_lora_module_list()
+print("modules:", modules)
+
+# construct input list and output list
+example_inputs, examples_outputs = [], []
+for example in get_examples_for_learning():
+    example_inputs.append(example["input"])
+    examples_outputs.append(example["output"])
+
+# perform LoRAHub learning
+module_weights, model, tokenizer = lorahub_learning(lora_module_list=modules,
+                                                    example_inputs=example_inputs,
+                                                    example_outputs=examples_outputs,
+                                                    max_inference_step=40,
+                                                    batch_size=1)
+
+print("module_weights:", module_weights)
+```
+
+The `lorahub_learning` function `lorahub_learning` has the following interface design:
+
+```python
 lorahub_learning(lora_module_list: List[str], # list of lora candidates
                  example_inputs: List[str],
                  example_outputs: List[str],
@@ -56,6 +99,8 @@ lorahub_learning(lora_module_list: List[str], # list of lora candidates
                  seed=42)
 ```
 
+A full example can be found in [example.py](example.py).
+
 # 🌲 Project Structure
 
 The lorahub source code is organized as below:
@@ -66,6 +111,7 @@ The lorahub source code is organized as below:
     -- constant.py # lora candidate module names
 |-- example.py # usage code for demonstration purpose
 ```
+
 
 # 🏰 Resource
 
