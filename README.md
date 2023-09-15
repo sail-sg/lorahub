@@ -4,7 +4,7 @@ The official repository which contains the code and pre-trained models for our p
 
 
 # 🔥 Updates
-- [**2023-9-13**]: Now Available for Easy Installation via `pip install lorahub`. For usage instructions regarding the interface, please refer to the 'example.py' file
+- [**2023-9-13**]: Now Available for Easy Installation via `pip install lorahub`. For usage instructions regarding the interface, please refer to the `example.py` file
 - [**2023-8-29**]: We released the full produce code at [reproduce_bbh.py](reproduce_bbh.py). Please checkout the script to reproduce our results!
 - [**2023-8-03**]: Integrated into Replicate, check out the [demo](https://replicate.com/cjwbw/lorahub)!
 - [**2023-7-27**]: We released our [code](https://github.com/sail-sg/lorahub) and [demo](https://huggingface.co/spaces/sail/lorahub). Check it out!
@@ -32,17 +32,15 @@ The figure shows the pipeline of LoraHub Learning. Our method encompasses two st
 <br>
 
 
-# 🌲 Project Structure
+# ⚡️ Quickstart
 
-Our code is organized as below:
-``` shell
-|-- lorahub
-    -- algorithm.py # main code for lorahub learning and inference
-    -- constant.py # lora candidate module names
-|-- example.py # usage code for demonstration purpose
+You can install lorahub using
+
+```shell
+pip install lorahub
 ```
 
-And you can use LoraHub learning by simply calling the following function:
+And then you can use lorahub learning by simply calling the following function:
 
 ``` python
 from lorahub.algorithm import lorahub_learning
@@ -58,27 +56,16 @@ lorahub_learning(lora_module_list: List[str], # list of lora candidates
                  seed=42)
 ```
 
+# 🌲 Project Structure
 
-# ⚡️ Quickstart
+The lorahub source code is organized as below:
 
-## Prepare Environment
-
-First, you should run the following commands to install the latest lib developed for LoraHub.
-
-```python
-pip install datasets
-pip install transformers
-pip install peft
-pip install nevergrad
-pip install torch
-pip install tqdm
-pip install pandas
-pip install numpy
+``` shell
+|-- lorahub
+    -- algorithm.py # main code for lorahub learning and inference
+    -- constant.py # lora candidate module names
+|-- example.py # usage code for demonstration purpose
 ```
-
-## Install LoraHub
-
-The pypi package will be released in a few days. Please stay tuned!
 
 # 🏰 Resource
 
