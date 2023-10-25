@@ -57,7 +57,9 @@ def evaluate_lorahub_results_few_shot(folder, flan_model_name):
             examples_outputs.append(example["completion"])
             
         # random select 5 examples for each task
-        shuffled_set = shuffle(zip(example_inputs, examples_outputs), seed=42)
+        random.seed(42)
+        shuffled_set = list(zip(example_inputs, examples_outputs))
+        random.shuffle(shuffled_set)
         example_inputs, examples_outputs = zip(*shuffled_set)
         # take the first 5 examples
         example_inputs, examples_outputs = example_inputs[:5], examples_outputs[:5]
