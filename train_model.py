@@ -384,6 +384,9 @@ def main():
         cache_dir=model_args.cache_dir,
         revision=model_args.model_revision,
         use_auth_token=True if model_args.use_auth_token else None,
+        unk_token="<unk>",
+        bos_token="<s>",
+        eos_token="</s>"
     )
     if model_args.use_lora_tuning:
         peft_config = LoraConfig(
