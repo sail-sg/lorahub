@@ -13,7 +13,7 @@ from peft.utils.save_and_load import set_peft_model_state_dict, get_peft_model_s
 from peft import PeftModel, PeftConfig
 from functools import partial
 from typing import List, Optional, Union
-
+import copy
 
 def load_base_model_and_lora_modules(lora_module_list: List[str], model_name_or_path: Optional[str] = None):
     """load base model and lora modules from huggingface model hub
@@ -50,7 +50,7 @@ def load_base_model_and_lora_modules(lora_module_list: List[str], model_name_or_
     for peft_model_id in tqdm(lora_module_list):
         print("> Loading {} ...".format(peft_model_id))
         cur_peft_model = PeftModel.from_pretrained(base_model, peft_model_id)
-        cache[peft_model_id] = get_peft_model_state_dict(cur_peft_model)
+        cache[peft_model_id] = copy.deepcopy(get_peft_model_state_dict(cur_peft_model))
 
         if first_dict is None:
             first_dict = cache[peft_model_id]
