@@ -117,7 +117,13 @@ The lorahub source code is organized as below:
 
 ## LoRA Candidates
 
-Our methodology requires a compendium of LoRA modules trained on preceding tasks. For parity with Flan, we adopt the tasks utilized to instruct Flan-T5, thereby incorporating nearly 196 distinct tasks and their corresponding instructions via https://huggingface.co/datasets/conceptofmind/FLAN_2022. Following this, we created several LoRA modules as possible candidates. These LoRA modules can be accessed at https://huggingface.co/models?search=lorahub.
+Our methodology requires a compendium of LoRA modules trained on preceding tasks. For parity with Flan, we adopt the tasks utilized to instruct Flan-T5, thereby incorporating nearly 196 distinct tasks and their corresponding instructions via the following command
+
+```
+git clone https://huggingface.co/datasets/lorahub/flanv2
+```
+
+Following this, we created several LoRA modules as possible candidates. These LoRA modules can be accessed at https://huggingface.co/models?search=lorahub.
 
 # 💬 Citation
 
