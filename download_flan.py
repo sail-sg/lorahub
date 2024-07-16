@@ -1,5 +1,6 @@
 from datasets import load_dataset
 import os
+from huggingface_hub import snapshot_download
 
 dataset_folder = "flan_task"
 
@@ -21,5 +22,13 @@ def download_flan():
         task_name = task_name.replace("/", "_")
         task_dataset.to_json(os.path.join(dataset_folder, task_name + ".json"))
 
+def download_flan_v2():
+    snapshot_download(repo_id="lorahub/flanv2", 
+                      repo_type='dataset',
+                      local_dir=dataset_folder,
+                      local_dir_use_symlinks=False)
+
 if __name__ == "__main__":
-    download_flan()
+    # WARNING: conceptofmind/FLAN_2022 is not avaiable any more, so we host the post-processed files under lorahub/flanv2
+    # download_flan()
+    download_flan_v2()
