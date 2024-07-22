@@ -4,6 +4,7 @@ The official repository which contains the code and pre-trained models for our p
 
 
 # 🔥 Updates
+- [**2024-7-18**]: Our paper is accpeted by COLM 2024!
 - [**2023-9-13**]: Now Available for Easy Installation via `pip install lorahub`. For usage instructions regarding the interface, please refer to the `example.py` file
 - [**2023-8-29**]: We released the full produce code at [reproduce_bbh.py](reproduce_bbh.py). Please checkout the script to reproduce our results!
 - [**2023-8-03**]: Integrated into Replicate, check out the [demo](https://replicate.com/cjwbw/lorahub)!
